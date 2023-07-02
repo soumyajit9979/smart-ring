@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Health Monitoring</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		/* Global Styles */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			background-color: #f2f2f2;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px 0;
+			border-bottom: 1px solid #ddd;
+		}
+
+		nav a {
+			color: #555;
+			text-decoration: none;
+			padding: 10px 20px;
+			border-radius: 20px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #555;
+			color: #fff;
+		}
+
+		nav a.active {
+			background-color: #555;
+			color: #fff;
+		}
+
+		main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding: 50px 0;
+		}
+
+		.stats-section {
+			flex-basis: 100%;
+			margin-bottom: 50px;
+		}
+
+		.stats {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		.stat {
+			flex-basis: 30%;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			transition: all 0.2s ease-in-out;
+		}
+
+		.stat:hover {
+			transform: translateY(-5px);
+		}
+
+		.stat h3 {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		.stat p {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.stat p span {
+			font-size: 24px;
+			font-weight: normal;
+		}
+
+		.chart-section {
+			flex-basis: 100%;
+		}
+
+		.chart-container {
+			flex-basis: 48%;
+			margin-bottom: 50px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.chart-title {
+			padding: 20px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.chart-title h2 {
+			font-size: 24px;
+		}
+
+		.chart {
+			height: 300px;
+			padding: 20px;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 20px;
+			border-top: 1px solid #ddd;
+		}
+
+		.footer p {
+			font-size: 14px;
+			color: #888;
+		}
+
+		@media screen and (max-width: 768px) {
+			.stat {
+				flex-basis: 48%;
+			}
+
+			.chart-container {
+				flex-basis: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav>
+				<a href="#" class="active">Home</a>
+				<a href="#">Charts</a>
+				<a href="#">Reports</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="stats-section">
+				<div class="stats">
+					<div class="stat ir-value">
+						<h3>IR Value</h3>
+						<p id="ir-value"></p>
+					</div>
+					<div class="stat bpm-value">
+						<h3>BPM</h3>
+						<p id="bpm-value"></p>
+					</div>
+					<div class="stat avg-bpm-value">
+						<h3>Average BPM</h3>
+						<p id="avg-bpm-value"></p>
+					</div>
+					<div class="stat temperature">
+						<h3>Temperature</h3>
+						<p id="temperature-value"><span>&deg;C</span></p>
+					</div>
+				</div>
+			</section>
+
+			<section class="chart-section">
+				<div class="chart-container">
+					<div class="chart-title">
+						<h2>IR</h2>
+					</div>
+					<div class="chart">
+						<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2210003/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+					</div>
+				</div>
+				<div class="chart-container">
+					<div class="chart-title">
+						<h2>BPM</h2>
+					</div>
+					<div class="chart">
+						<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2210003/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+
+
+					</div>
+				</div>
+				<div class="chart-container">
+					<div class="chart-title">
+						<h2>Avg BPM</h2>
+					</div>
+					<div class="chart">
+						<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2210003/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+
+
+					</div>
+				</div>
+				<div class="chart-container">
+					<div class="chart-title">
+						<h2>Temperature</h2>
+					</div>
+					<div class="chart">
+						<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2210003/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Health Monitoring</p>
+		</footer>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var url = "https://api.thingspeak.com/channels/";
+			var key = "Y5UDRCTOR4K148G2";    		//put read API in key value
+			var field1 = "field1";
+			var field2 = "field2";
+			var field3 = "field3";
+			var field4 = "field4";
+			var count = 1;
+// put channel ids here in place of 2196843
+			$.getJSON(url + "2210003/fields/1/last.json?api_key=" + key, function(data) {
+				var irValue = data.field1;
+				$("#ir-value").html(irValue);
+			});
+
+			$.getJSON(url + "2210003/fields/2/last.json?api_key=" + key, function(data) {
+				var bpmValue = data.field2;
+				$("#bpm-value").html(bpmValue);
+			});
+
+			$.getJSON(url + "2210003/fields/3/last.json?api_key=" + key, function(data) {
+				var avgBpmValue = data.field3;
+				$("#avg-bpm-value").html(avgBpmValue);
+			});
+
+			$.getJSON(url + "2210003/fields/4/last.json?api_key=" + key, function(data) {
+				var temperature = data.field4;
+					$("#temperature-value").html(temperature + "<span>&deg;C</span>");
+			});
+		});
+	</script>
+</body>
+</html>
